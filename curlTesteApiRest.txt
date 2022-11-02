@@ -1,0 +1,63 @@
+
+
+
+
+URL_API_BASE: http://localhost:8080/api/usuario
+GET Listar todos: /listarTodos
+POST cadastrar new user: /salvar (Pelo body)
+GET validar senha: /validarSenha (Parametro URL)
+
+----------------------------------------- // 1o - Preparando o banco ------------------------------------------------------
+1o - Roda a aplicação e leia os erros!!
+
+create database DB_LG3_RestauranteIFSP;
+use DB_LG3_RestauranteIFSP;
+
+create table usuario... que vai dar erro no console.
+
+----------------------------------------- // 2o - Criando o usuário inicial ----------------------------------------------
+Obs: Necessário pois para outras requisições é necessário o token JWT (rotas liberadas: (/login) e (/api/usuario/create)
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"5", "login":"jubileu", "password":"jubinaoleu123", "firstName":"JubileuNão", "lastName":"NaoLeu", "email":"jubileu@hotmail.com", "perfilPermissao":"1"}' http://localhost:8080/api/usuario/create
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"5", "login":"jubiNaoLeu", "password":"jubinaoleu", "firstName":"Jubileu", "lastName":"NaoLeu", "email":"jubileu@hotmail.com", "perfilPermissao":"1"}' http://localhost:8080/api/usuario/create
+
+- Criado ira retornar no console o Json!
+- Testar uma requisição em outra rota privada, sem o TOKEN!
+
+curl -L http://localhost:8080/api/usuario/listarTodos
+
+---------------------------------------- // 3o - Realiza login para obter o Token JWT ------------------------------------
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdWJpbGV1IiwiZXhwIjoxNjY3NDIxMTIxfQ.2EE1Ur9pOvDJRZ1Hb1QvQPd85V9WD30mjVfqRjVCdjIL58UvZZBm37P5mm4vbaYPWH6OcPjNdwqFHUI3aU1tsw 
+
+curl -X POST -H 'Content-Type: application/json' -d '{"login":"jubileu", "password":"jubinaoleu123"}' http://localhost:8080/login
+
+- Ira retornar o Token
+
+---------------------------------------- // 4o - Faz as requisições desejadas mandando o Token no header -----------------
+
+curl -L --header 'Authorization: Bearer TOKEN' http://localhost:8080/api/usuario/listarTodos
+
+curl -L --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdWJpbGV1IiwiZXhwIjoxNjY3NDIxMTIxfQ.2EE1Ur9pOvDJRZ1Hb1QvQPd85V9WD30mjVfqRjVCdjIL58UvZZBm37P5mm4vbaYPWH6OcPjNdwqFHUI3aU1tsw' http://localhost:8080/api/usuario/listarTodos
+
+
+---------------------------------------- // 5o - Atualiza informações de usuário -----------------------------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+- Salvando um novo usuário: 
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"1", "login":"wellison", "password":"wel123", "firstName":"Wellison", "lastName":"Bertelli", "email":"wellison@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create 
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"2", "login":"pamonha", "password":"kiritu123", "firstName":"Irineu", "lastName":"InemEu", "email":"inemeu@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create  
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"3", "login":"poçoka", "password":"eoq123", "firstName":"Irineia", "lastName":"InemTu", "email":"irineia@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create  
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"4", "login":"paparazzi", "password":"papa123", "firstName":"Paparazzi", "lastName":"Bertelli", "email":"paparazzi@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create  
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"5", "login":"jubileu", "password":"jubinaoleu123", "firstName":"Jubileu", "lastName":"NaoLeu", "email":"jubileu@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create
+
+
+
