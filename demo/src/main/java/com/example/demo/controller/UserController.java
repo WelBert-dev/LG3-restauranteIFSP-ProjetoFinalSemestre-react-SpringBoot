@@ -28,7 +28,7 @@ public class UserController {
         return ResponseEntity.ok(_userRepository.findAll());
     }
 
-    @PostMapping("/salvar")
+    @PostMapping("/create")
     public ResponseEntity<UserModel> salvar(@RequestBody UserModel usuario) {
         usuario.setPassword(_encoder.encode(usuario.getPassword()));
         return ResponseEntity.ok(_userRepository.save(usuario));
