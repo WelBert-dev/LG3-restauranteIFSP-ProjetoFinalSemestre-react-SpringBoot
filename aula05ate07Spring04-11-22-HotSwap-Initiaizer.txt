@@ -1,0 +1,40 @@
+
+
+---------------------------// Aula 05 - Hot Swap com Spring Boot Devtools // ---------------------------
+Data: 04/11/2022 
+link: https://www.youtube.com/watch?v=8W8t2yh8CD4&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H&index=6
+
+~ Conceitudando: O SpringDevtools só de adiciona-lo no projeto habilita o recurso
+de "HotSwap" que possibilita incrementos no projeto e o re-build acontece mais rápido
+podendo assim adicionar métodos, renomeações e ao re-build demora menos tempo para exec.
+
+1o - Referênciar o springDevtools no pom:
+
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <scope>runtime</scope>
+        <optional>true</optional>
+</dependency>
+
+
+2o - Pronto, agora é só realizar as alterações e ver o resultado fast ao re-buildar o project.
+
+
+---------------------------//  06 - Gerando projeto com start.spring.io (BASIÇÂO JA SEI) // -----------
+Data: 04/11/2022 
+link: https://www.youtube.com/watch?v=sZGw-evH0OE&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H&index=7
+
+~ Conceituando: Gerando um projeto com o initializer, ja sei e.e
+- Dica: Sempre ler a documentação Spring, para isto basta pesquisar no google "Spring realease notes"
+
+
+---------------------------// 07 - Método GET parte 1 // ----------------------------------------------
+
+~ Lombok:
+@Data => Definição a nível de classe, gera todos os getters e setters, os hashCode, equals e toString também.
+@AllArgsConstructor => Definição a nível de classe, gera o construtor e atribui todos os valores para as props da classe.
+@RequiredArgsConstructor => Definição a nível de classe, gera o construtor e atribui apenas para as props final.
+- Obs: Lembrando que para utilizar essas anotações e serem refletidas de verdade, deve-se trasnformar os elementos em spring Bean.
+
+
