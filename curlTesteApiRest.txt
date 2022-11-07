@@ -190,3 +190,19 @@ curl -X POST -H 'Content-Type: application/json' -d '{"id":"4", "login":"paparaz
 curl -X POST -H 'Content-Type: application/json' -d '{"id":"5", "login":"jubileu", "password":"jubinaoleu123", "firstName":"Jubileu", "lastName":"NaoLeu", "email":"jubileu@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create
 
 
+
+
+------------------------------------------- // 07/11/2022 testando na aula de PJ2 
+
+-- Obs: Consegui executar o projeto spring no inteliJ do Windows sem ser premium!!! 
+-- Solução: Baixar o "Springboot helper" e "Springboot Assistente".
+-- Para isto basta ir em: File > Settings > Plugins > Search <--- aqui 
+
+caminho do binário do curl no windows: C:\Users\aluno\Downloads\curl-7.86.0-win64-mingw\curl-7.86.0-win64-mingw\bin
+
+Listando todos:
+C:\Users\aluno\Downloads\curl-7.86.0-win64-mingw\curl-7.86.0-win64-mingw\bin\curl -L http://localhost:8080/api/usuario/listarTodos
+
+
+
+
