@@ -183,6 +183,9 @@ curl -X POST -H 'Content-Type: application/json' -d '{"id":"1", "login":"welliso
 
 curl -X POST -H 'Content-Type: application/json' -d '{"id":"2", "login":"pamonha", "password":"kiritu123", "firstName":"Irineu", "lastName":"InemEu", "email":"inemeu@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create  
 
+
+-H "Content-Type: application/x-www-form-urlencoded"
+
 curl -X POST -H 'Content-Type: application/json' -d '{"id":"3", "login":"poçoka", "password":"eoq123", "firstName":"Irineia", "lastName":"InemTu", "email":"irineia@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create  
 
 curl -X POST -H 'Content-Type: application/json' -d '{"id":"4", "login":"paparazzi", "password":"papa123", "firstName":"Paparazzi", "lastName":"Bertelli", "email":"paparazzi@hotmail.com", "perfilPermissao":"2"}' http://localhost:8080/api/usuario/create  
@@ -197,12 +200,23 @@ curl -X POST -H 'Content-Type: application/json' -d '{"id":"5", "login":"jubileu
 -- Obs: Consegui executar o projeto spring no inteliJ do Windows sem ser premium!!! 
 -- Solução: Baixar o "Springboot helper" e "Springboot Assistente".
 -- Para isto basta ir em: File > Settings > Plugins > Search <--- aqui 
+-- Obs: Aplication json não aceita espaços entre as propriedades do objeto!!!
+
 
 caminho do binário do curl no windows: C:\Users\aluno\Downloads\curl-7.86.0-win64-mingw\curl-7.86.0-win64-mingw\bin
 
 Listando todos:
 C:\Users\aluno\Downloads\curl-7.86.0-win64-mingw\curl-7.86.0-win64-mingw\bin\curl -L http://localhost:8080/api/usuario/listarTodos
 
+Criando um novo usuário: 
+C:\Users\aluno\Downloads\curl-7.86.0-win64-mingw\curl-7.86.0-win64-mingw\bin\curl -X POST -H 'Content-Type: application/json;charset=UTF-8;' -d '{"id":"5","login":"jubileu","password":"jubinaoleu123","firstName":"JubileuNão","lastName":"NaoLeu","email":"jubileu@hotmail.com","perfilPermissao":"1"}' http://localhost:8080/api/usuario/create
+
+curl -X POST -H 'Content-Type: application/json' -d '{"id":"5", "login":"jubileu", "password":"jubinaoleu123", "firstName":"JubileuNão", "lastName":"NaoLeu", "email":"jubileu@hotmail.com", "perfilPermissao":"1"}' http://localhost:8080/api/usuario/create
 
 
 
+------------------------------------------- // 07/11/2022 Corrigindo novo erro, porém no curl  (415 - Unsupported Media Type)
+Definição: Ocorre pois o Spring não faz tratamento de Json com um PostMapping comum, é preciso anotar com RequestMapping e passar configurações para funcionar!
+Obs: Ainda ocorrendo
+
+C:\Users\aluno\Downloads\curl-7.86.0-win64-mingw\curl-7.86.0-win64-mingw\bin\curl --request POST --url http://localhost:8080/api/usuario/create --header 'content-type: application/json; charset=UTF-8' --data '{"id":"5","login":"jubileu","password":"jubinaoleu123","firstName":"JubileuNão","lastName":"NaoLeu","email":"jubileu@hotmail.com","perfilPermissao":"1"}' 
